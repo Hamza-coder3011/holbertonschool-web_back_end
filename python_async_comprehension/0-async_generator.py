@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-This module provides a method
+Async generator that yields 10 random numbers asynchronously
 """
+
 import asyncio
 import random
-from typing import AsyncGenerator
 
-async def async_generator() -> AsyncGenerator[float, None]:
+
+async def async_generator():
     """
     Asynchronously generates 10 random floats between 0 and 10,
     waiting 1 second between each.
