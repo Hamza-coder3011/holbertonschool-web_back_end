@@ -2,6 +2,8 @@
 """
 This module provides a function to create a key-value tuple where the value is squared.
 """
+
+
 from typing import Union, Tuple
 
 def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:

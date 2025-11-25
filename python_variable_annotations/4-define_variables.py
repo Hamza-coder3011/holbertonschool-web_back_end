@@ -8,6 +8,8 @@ Variables:
     i_understand_annotations (bool): A boolean set to True.
     school (str): A string with value "Holberton".
 """
+
+
 a: int = 1
 pi: float = 3.14
 i_understand_annotations: bool = True
