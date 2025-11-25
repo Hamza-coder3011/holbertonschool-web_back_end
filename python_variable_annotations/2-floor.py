@@ -6,6 +6,7 @@ This module provides a function to compute the floor of a float number.
 
 import math
 
+
 def floor(n: float) -> int:
     """Return the floor of a float."""
     return math.floor(n)
