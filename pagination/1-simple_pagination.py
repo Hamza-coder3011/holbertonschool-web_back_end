@@ -5,7 +5,7 @@ Simple pagination module.
 
 import csv
 from typing import List, Optional
-from 0-simple_helper_function import index_range
+from simple_helper_function import index_range
 
 
 class Server:
