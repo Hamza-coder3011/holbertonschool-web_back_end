@@ -64,14 +64,14 @@ class Server:
         if start_idx >= len(dataset):
             return []
         return dataset[start_idx:end_idx]
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """Return a dictionary with pagination metadata."""
         data = self.get_page(page, page_size)
         dataset_length = len(self.dataset())
-        
+
         total_pages = math.ceil(dataset_length / page_size)
-        
+
         return {
             "page_size": len(data),
             "page": page,
