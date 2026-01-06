@@ -1,6 +1,4 @@
 const fs = require('fs');
-const { parse } = require('csv-parse/sync');
-
 
 function countStudents(path) {
   try {
@@ -8,15 +6,19 @@ function countStudents(path) {
     const results = {};
 
     const data = fs.readFileSync(path, 'utf8');
-    const records = parse(data, { columns: true, skip_empty_lines: true });
+    const lines = data.split('\n');
+    const filteredLines = lines.filter((line) => line.trim() !== '');
+    const studentLines = filteredLines.slice(1);
+    
 
-    for (const row of records) {
+    for (const line of studentLines) {
       totalStudents += 1;
-      if (!(row.field in results)) {
-        results[row.field] = { students_nb: 1, students_list: [row.firstname] };
+      const content = line.split(',');
+      if (!(content[3] in results)) {
+        results[content[3]] = { students_nb: 1, students_list: [content[0]] };
       } else {
-        results[row.field].students_nb += 1;
-        results[row.field].students_list.push(row.firstname);
+        results[content[3]].students_nb += 1;
+        results[content[3]].students_list.push(content[0]);
       }
     }
     console.log(`Number of students: ${totalStudents}`);
@@ -24,7 +26,7 @@ function countStudents(path) {
       console.log(`Number of students in ${key}: ${value.students_nb}. List: ${value.students_list.join(', ')}`);
     }
   } catch (error) {
-    console.log('Cannot load the database');
+    throw new Error('Cannot load the database');
   }
 }
 
