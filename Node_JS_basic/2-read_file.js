@@ -26,7 +26,9 @@ function countStudents(path) {
       fields[field].push(firstname);
     }
 
-    for (const field of Object.keys(fields)) {
+    const fieldNames = Object.keys(fields).sort();
+
+    for (const field of fieldNames) {
       console.log(
         `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`
       );
